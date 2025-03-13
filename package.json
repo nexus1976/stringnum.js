@@ -1,0 +1,20 @@
+{
+  "name": "stringnum",
+  "version": "1.0.0",
+  "description": "Convert numbers to strings of their spelled out words for currency or general usage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "currency",
+    "words",
+    "strings",
+    "numbers"
+  ],
+  "author": "Daniel Graham",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
