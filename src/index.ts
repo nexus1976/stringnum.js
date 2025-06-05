@@ -1,4 +1,9 @@
-export default class StringNum {
+export interface IStringNum {
+    toWords(num: number, formatFinancial?: boolean): string;
+    splitNumStringByPlaces(str: string): string[];
+    wordize(str: string): string;
+}
+export class StringNum implements IStringNum {
     constructor() { }
     static numberPlaces: Map<number, string> = new Map([
         [1, ''],
@@ -43,10 +48,11 @@ export default class StringNum {
     static reverseString(str: string): string {
         return str.split('').reverse().join('');
     };
-    static toProperCase(str: string): string {
+    public static toProperCase(str: string): string {
         return str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     };
-    static splitNumStringByPlaces(str: string): string[] {
+
+    public splitNumStringByPlaces(str: string): string[] {
         const result: string[] = [];
         let placeCounter: number = 0;
         let placeResult: string = '';
@@ -64,7 +70,7 @@ export default class StringNum {
         }
         return result;
     };
-    static wordize (str: string): string {
+    public wordize (str: string): string {
         let result: string = '';
         if (str.length === 3) {
             const word: string = str.substring(0, 1);
@@ -87,8 +93,7 @@ export default class StringNum {
         }
         return result.trim();
     };
-    
-    static toWords (num: number, formatFinancial: boolean = true): string {
+    public toWords (num: number, formatFinancial: boolean = true): string {
         if (num === null || num === undefined || isNaN(num)) {
             return '';
         }
@@ -100,11 +105,11 @@ export default class StringNum {
             wordDeci = splitNum[1];
         }
         let myword: string = '';
-        const wordPlaces: string[] = StringNum.splitNumStringByPlaces(wordNum);
+        const wordPlaces: string[] = this.splitNumStringByPlaces(wordNum);
 
         for (let i = wordPlaces.length; i > 0; i--) {
-            const wordPart: string = StringNum.wordize(wordPlaces[i-1])
-            const wordPlace: string = this.numberPlaces.get(i) || '';
+            const wordPart: string = this.wordize(wordPlaces[i-1])
+            const wordPlace: string = StringNum.numberPlaces.get(i) || '';
             myword += (`${wordPart} ${wordPlace}`).trim() + ' ';
         }
 
@@ -118,7 +123,9 @@ export default class StringNum {
                 myword += 'no/100';
             }
         }
-
+        if (num < 0) {
+            myword = (formatFinancial ? 'Negative ' : 'negative ') + myword;
+        }
         return myword.trim();
     };
 };

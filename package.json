@@ -2,9 +2,20 @@
   "name": "stringnum",
   "version": "1.0.0",
   "description": "Convert numbers to strings of their spelled out words for currency or general usage.",
-  "main": "index.js",
+  "homepage": "https://github.com/nexus1976/stringnum.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexus1976/stringnum.js.git"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "test": "mocha \"test/**/*.ts\""
   },
   "keywords": [
     "currency",
@@ -13,8 +24,14 @@
     "numbers"
   ],
   "author": "Daniel Graham",
-  "license": "ISC",
+  "license": "MIT",
+  "files": ["bin/","lib/","src/"],
   "devDependencies": {
+    "@types/mocha": "10.0.10",
+    "@types/node": "22.15.29",
+    "cross-env": "7.0.3",
+    "mocha": "11.5.0",
+    "ts-node": "10.9.2",
     "typescript": "^5.8.2"
   }
 }

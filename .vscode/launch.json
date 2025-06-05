@@ -5,9 +5,24 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/index.ts",
+            "program": "${workspaceFolder}/src/index.ts",
             "preLaunchTask": "tsc: build - tsconfig.json",
-            "outFiles": ["${workspaceFolder}/output/**/*.js"]
-        }
+            "outFiles": ["${workspaceFolder}/lib/**/*.js"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Mocha Tests",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "-r",
+                "ts-node/register",
+                "${workspaceFolder}/test/**/*.test.ts" // Adjust the glob pattern to match your test file location
+            ],
+            "cwd": "${workspaceFolder}",
+            "protocol": "inspector",
+            "console": "integratedTerminal", // Optional: Use integrated terminal
+            "internalConsoleOptions": "neverOpen" // Optional: Prevent default internal console
+        }        
     ]
 }
