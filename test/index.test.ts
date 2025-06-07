@@ -26,11 +26,11 @@ describe("IStringNum", () => {
     assert.strictEqual(output, result);
   });
 
-    it("should handle negative numbers to financial string", () => {
-        const input: number = -10;
-        const output: string = "Negative Ten and no/100";
-        const stringNum: IStringNum = new StringNum();
-        const result: string = stringNum.toWords(input);
-        assert.strictEqual(output, result);
-    });
+  it("should handle negative numbers to financial string", () => {
+      const input: number = -10;
+      const output: string = "Negative Ten and no/100";
+      const stringNum: IStringNum = new StringNum();
+      const result: string = stringNum.toWords(input);
+      assert.strictEqual(output, result);
+  });
 });
