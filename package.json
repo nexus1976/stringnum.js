@@ -1,6 +1,6 @@
 {
   "name": "stringnum",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert numbers to strings of their spelled out words for currency or general usage.",
   "homepage": "https://github.com/nexus1976/stringnum.js",
   "repository": {
