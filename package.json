@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production tsc -p .",
-    "test": "mocha \"test/index.test.ts\""
+    "test": "mocha -r ts-node/register \"test/index.test.ts\""
   },
   "keywords": [
     "currency",
